@@ -6,26 +6,41 @@ $interest = $_REQUEST['interest'] ?? null;
 
 $messages = [];
 
-if (!(isset($amount) && isset($years) && isset($interest))) {
-    $messages[] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
+if (!isset($amount) || $amount == "") {
+    $messages[] = 'Nie podano kwoty kredytu.';
+}
+if (!isset($years) || $years == "") {
+    $messages[] = 'Nie podano liczby lat.';
 }
 
-if ($amount == "") {
-    $messages[] = 'Nie podano kwoty kredytu';
-}
-if ($years == "") {
-    $messages[] = 'Nie podano liczby lat';
+if (!isset($interest) || $interest == "") {
+    $messages[] = 'Nie wybrano oprocentowania.';
 }
 
 if (empty($messages)) {
     
     if (!is_numeric($amount)) {
-        $messages[] = 'Kwota nie jest liczbą';
+        $messages[] = 'Kwota kredytu musi być liczbą.';
+    } elseif ($amount <= 0) {
+        $messages[] = 'Kwota kredytu musi być wartością dodatnią.';
     }
-    
+
     if (!is_numeric($years)) {
-        $messages[] = 'Liczba lat nie jest liczbą';
-    }   
+        $messages[] = 'Liczba lat musi być liczbą.';
+    } else {
+        $years_int = intval($years);
+        if ($years_int <= 0) {
+            $messages[] = 'Liczba lat musi być większa od zera.';
+        } elseif ($years != $years_int) {
+            $messages[] = 'Liczba lat musi być liczbą całkowitą.';
+        }
+    }
+
+    if (!is_numeric($interest)) {
+        $messages[] = 'Oprocentowanie musi być liczbą.';
+    } elseif ($interest < 0) {
+        $messages[] = 'Oprocentowanie nie może być ujemne.';
+    }
 }
 
 if (empty($messages)) {
@@ -39,12 +54,7 @@ if (empty($messages)) {
     $total_sum = $amount + $extra_cost;
     
     $months = $years * 12;
-    
-    if ($months > 0) {
-        $result = $total_sum / $months;
-    } else {
-        $messages[] = 'Liczba lat musi być większa od zera';
-    }
+    $result = $total_sum / $months;
 }
 
 include 'calc_view.php';
