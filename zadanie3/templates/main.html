@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{$page_title|default:"Kalkulator Kredytowy"}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+
+            <header id="header">
+                <div class="logo container">
+                    <div>
+                        <h1><a href="index.php" id="logo">Zadanie 3: </a></h1>
+                        <p>Smarty - Szablonowanie</p>
+                    </div>
+                </div>
+            </header>
+
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="index.php">Strona Główna</a></li>
+                </ul>
+            </nav>
+
+            <section id="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content">
+                                {block name=content}
+                                {/block}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="copyright">
+                                <ul class="menu">
+                                    <li>&copy; 2026 Zuzanna Brzozowska</li>
+                                    <li>Przedmiot: PAI</li>
+                                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
