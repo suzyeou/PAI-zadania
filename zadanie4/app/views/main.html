@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{$page_title|default:"Kalkulator Kredytowy"}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+
+            <header id="header">
+                <div class="logo container">
+                    <div>
+                        <h1><a href="{$conf->app_url}" id="logo">Zadanie 4: </a></h1>
+                        <p>Framework Amelia - Kalkulator</p>
+                    </div>
+                </div>
+            </header>
+
+            <nav id="nav">
+                <ul>
+                    <li class="current"><a href="{$conf->app_url}">Strona Główna</a></li>
+                </ul>
+            </nav>
+
+            <section id="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content">
+                                {block name=content} {/block}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="copyright">
+                                <ul class="menu">
+                                    <li>&copy; 2026 Zuzanna Brzozowska</li>
+                                    <li>Framework: Amelia</li>
+                                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="{$conf->app_url}/assets/js/jquery.min.js"></script>
+        <script src="{$conf->app_url}/assets/js/jquery.dropotron.min.js"></script>
+        <script src="{$conf->app_url}/assets/js/jquery.scrolly.min.js"></script>
+        <script src="{$conf->app_url}/assets/js/browser.min.js"></script>
+        <script src="{$conf->app_url}/assets/js/breakpoints.min.js"></script>
+        <script src="{$conf->app_url}/assets/js/util.js"></script>
+        <script src="{$conf->app_url}/assets/js/main.js"></script>
+
+    </body>
+</html>
