@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{$page_title|default:"Kalkulator Kredytowy"}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="{$conf->assets_url}/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+
+            <header id="header">
+                <div class="logo container">
+                    <div>
+                        <h1><a href="{$conf->app_url}" id="logo">Zadanie 5: </a></h1>
+                        <p>Ochrona zasobów - Kalkulator</p>
+                    </div>
+                </div>
+            </header>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="{$conf->action_url}calcShow">Kalkulator</a></li>
+                    {if count($conf->roles)>0}
+                        <li><a href="{$conf->action_url}logout">Wyloguj</a></li>
+                    {else}
+                        <li><a href="{$conf->action_url}login">Zaloguj</a></li>
+                    {/if}
+                </ul>
+            </nav>
+
+            <section id="main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="content">
+                                {block name=content} {/block}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="footer">
+                <div class="container">
+                    <div id="copyright">
+                        <ul class="menu">
+                            <li>&copy; 2026 Zuzanna Brzozowska</li>
+                            <li>Framework: Amelia</li>
+                            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="{$conf->assets_url}/js/jquery.min.js"></script>
+        <script src="{$conf->assets_url}/js/jquery.dropotron.min.js"></script>
+        <script src="{$conf->assets_url}/js/jquery.scrolly.min.js"></script>
+        <script src="{$conf->assets_url}/js/browser.min.js"></script>
+        <script src="{$conf->assets_url}/js/breakpoints.min.js"></script>
+        <script src="{$conf->assets_url}/js/util.js"></script>
+        <script src="{$conf->assets_url}/js/main.js"></script>
+
+    </body>
+</html>
