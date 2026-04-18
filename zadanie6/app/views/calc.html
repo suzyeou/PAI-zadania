@@ -1,0 +1,68 @@
+{extends file="main.html"}
+
+{block name=content}
+<article class="box page-content">
+    <header>
+        <h2>Kalkulator Kredytowy</h2>
+        <p>Wypełnij formularz, aby poznać wysokość swojej raty.</p>
+    </header>
+
+    <section>
+        {if $msgs->isError()}
+            <div style="margin: 20px 0; padding: 15px; background: #FF8888; color: white; border-radius: 5px;">
+                <ol style="margin: 0; padding-left: 20px;">
+                {foreach $msgs->getErrors() as $err}
+                    <li>{$err}</li>
+                {/foreach}
+                </ol>
+            </div>
+        {/if}
+
+        {if $msgs->isInfo()}
+            <div style="margin: 20px 0; padding: 15px; background: #88FF88; color: #333; border-radius: 5px;">
+                <ol style="margin: 0; padding-left: 20px;">
+                {foreach $msgs->getInfos() as $inf}
+                    <li>{$inf}</li>
+                {/foreach}
+                </ol>
+            </div>
+        {/if}
+
+        <form method="post" action="{$conf->action_url}calcCompute">
+            <div class="row gtr-50">
+                <div class="col-4 col-12-mobile">
+                    <label>Kwota kredytu:</label>
+                    <input type="text" name="amount" value="{$form->amount|default:''}" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <label>Liczba lat:</label>
+                    <input type="text" name="years" value="{$form->years|default:''}" />
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <label>Oprocentowanie:</label>
+                    <select name="interest">
+                        <option value="2" {if $form->interest == '2'}selected{/if}>2%</option>
+                        <option value="4" {if $form->interest == '4'}selected{/if}>4%</option>
+                        <option value="6" {if $form->interest == '6'}selected{/if}>6%</option>
+                        <option value="8" {if $form->interest == '8'}selected{/if}>8%</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Oblicz ratę" class="button alt" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+
+        {if isset($res->result)}
+            <div style="margin-top: 30px; padding: 20px; background: #ebed6a; border-radius: 5px; color: #333;">
+                <h3 style="margin: 0;">
+                    Miesięczna rata: 
+                    <strong>{$res->result|number_format:2:",":" "} PLN</strong>
+                </h3>
+            </div>
+        {/if}
+    </section>
+</article>
+{/block}

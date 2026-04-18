@@ -1,0 +1,39 @@
+{extends file="main.html"}
+
+{block name=content}
+<article class="box page-content">
+    <header>
+        <h2>Logowanie do systemu</h2>
+    </header>
+    <section>
+        {if $msgs->isError()}
+            <div style="margin: 20px 0; padding: 15px; background: #FF8888; color: white; border-radius: 5px;">
+                <ol style="margin: 0; padding-left: 20px;">
+                {foreach $msgs->getErrors() as $err}
+                    <li>{$err}</li>
+                {/foreach}
+                </ol>
+            </div>
+        {/if}
+        
+        <form action="{$conf->action_url}login" method="post">
+            <div class="row gtr-50">
+                <div class="col-6 col-12-mobile">
+                    <label for="id_login">Login: </label>
+                    <input id="id_login" type="text" name="login" />
+                </div>
+                <div class="col-6 col-12-mobile">
+                    <label for="id_pass">Hasło: </label>
+                    <input id="id_pass" type="password" name="pass" />
+                </div>
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Zaloguj" class="button alt" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        
+    </section>
+</article>
+{/block}
