@@ -16,5 +16,10 @@ App::getRouter()->addRoute('logout',       'LoginCtrl');
 App::getRouter()->addRoute('registerView', 'RegisterCtrl');
 App::getRouter()->addRoute('register',     'RegisterCtrl');
 
-App::getRouter()->addRoute('userView',     'UserCtrl',  ['User','Admin']);
+App::getRouter()->addRoute('userView',     'UserCtrl',  ['User']);
+App::getRouter()->addRoute('userViewPart', 'UserCtrl',  ['User']);
+App::getRouter()->addRoute('songSave',     'UserCtrl',  ['User']);
+App::getRouter()->addRoute('songDelete',   'UserCtrl',  ['User']);
+App::getRouter()->addRoute('songEdit',     'UserCtrl',  ['User']);
+
 App::getRouter()->addRoute('adminView',    'AdminCtrl', ['Admin']);

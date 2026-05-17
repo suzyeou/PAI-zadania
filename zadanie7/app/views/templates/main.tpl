@@ -73,5 +73,6 @@
 	<!-- Scripts -->
 	<script src="{$conf->app_url}/public/assets/js/jquery.min.js"></script>
 	<script src="{$conf->app_url}/public/assets/js/main.js"></script>
+	<script type="text/javascript" src="{$conf->app_url}/public/assets/js/functions.js"></script>
 </body>
 </html>

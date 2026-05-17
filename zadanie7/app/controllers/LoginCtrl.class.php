@@ -74,7 +74,10 @@ class LoginCtrl {
 
     public function action_logout() {
         SessionUtils::remove('user');
-        session_destroy();
+        
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
         App::getRouter()->redirectTo('loginView');
     }
 
