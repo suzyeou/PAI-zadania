@@ -154,7 +154,6 @@ class UserCtrl {
                 Utils::addErrorMessage('Intensywność musi być liczbą całkowitą.');
             } else {
                 $intensityVal = intval($this->form->intensity);
-                
                 if ($intensityVal < 1 || $intensityVal > 10) {
                     Utils::addErrorMessage('Intensywność nastroju musi mieścić się w przedziale od 1 do 10.');
                 }
@@ -168,19 +167,49 @@ class UserCtrl {
 
         $idUser = App::getDB()->get("USER", "idUser", ["login" => $user->login]);
 
+        $cleanedTitle = trim($this->form->title);
+        $cleanedArtist = trim($this->form->artist);
+
+        if (empty($this->form->idSong)) {
+            $isDuplicate = App::getDB()->has("SONG", [
+                "AND" => [
+                    "title" => $cleanedTitle,
+                    "artist" => $cleanedArtist,
+                    "idMood" => $this->form->idMood,
+                    "idUser" => $idUser
+                ]
+            ]);
+        } else {
+            $isDuplicate = App::getDB()->has("SONG", [
+                "AND" => [
+                    "title" => $cleanedTitle,
+                    "artist" => $cleanedArtist,
+                    "idMood" => $this->form->idMood,
+                    "idUser" => $idUser,
+                    "idSong[!]" => $this->form->idSong
+                ]
+            ]);
+        }
+
+        if ($isDuplicate) {
+            Utils::addErrorMessage('Masz już w swoim dzienniku utwór "' . $cleanedTitle . '" wykonawcy "' . $cleanedArtist . '" przypisany do tego nastroju.');
+            $this->action_userView();
+            return;
+        }
+
         try {
             if (empty($this->form->idSong)) {
                 App::getDB()->insert("SONG", [
-                    "title" => trim($this->form->title),
-                    "artist" => trim($this->form->artist),
+                    "title" => $cleanedTitle,
+                    "artist" => $cleanedArtist,
                     "idMood" => $this->form->idMood,
                     "intensity" => intval($this->form->intensity),
                     "idUser" => $idUser
                 ]);
             } else {
                 App::getDB()->update("SONG", [
-                    "title" => trim($this->form->title),
-                    "artist" => trim($this->form->artist),
+                    "title" => $cleanedTitle,
+                    "artist" => $cleanedArtist,
                     "idMood" => $this->form->idMood,
                     "intensity" => intval($this->form->intensity)
                 ], [

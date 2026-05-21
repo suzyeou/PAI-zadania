@@ -10,3 +10,13 @@
         </ul>
     </div>
 {/if}
+
+{if $msgs->isInfo()}
+    <div class="messages" style="margin: 0 0 1.5em 0; padding: 1em; border-radius: 4px; border: 1px solid #2ecc71; background-color: #f4fbf7; color: #27ae60;">
+        <ul style="margin: 0; padding: 0; list-style-type: none; font-size: 0.9em; font-weight: bold;">
+        {foreach $msgs->getMessages() as $msg}
+            <li>✓ {$msg->text}</li>
+        {/foreach}
+        </ul>
+    </div>
+{/if}

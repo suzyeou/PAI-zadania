@@ -22,4 +22,9 @@ App::getRouter()->addRoute('songSave',     'UserCtrl',  ['User']);
 App::getRouter()->addRoute('songDelete',   'UserCtrl',  ['User']);
 App::getRouter()->addRoute('songEdit',     'UserCtrl',  ['User']);
 
-App::getRouter()->addRoute('adminView',    'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('adminView',        'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('adminViewPart',    'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('moodSave',         'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('moodDelete',       'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('userDelete',       'AdminCtrl', ['Admin']);
+App::getRouter()->addRoute('userSave',         'AdminCtrl', ['Admin']);
